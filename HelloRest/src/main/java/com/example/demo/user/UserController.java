@@ -5,6 +5,7 @@ import java.security.Provider.Service;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.jpa.internal.enhance.EnhancingClassTransformerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,8 @@ public class UserController {
 	@PostMapping("/addUser")
 	public ResponseEntity<Object> addUser(@RequestBody User user) {
 		User savedUser = userDaoServices.addUser(user);
+		
+		//EnhancingClassTransformerImpl the Post method to return correct HTTP status Code and loaction
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
