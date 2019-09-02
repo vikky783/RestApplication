@@ -1,6 +1,7 @@
 package com.example.demo.user;
 
 import java.net.URI;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.security.Provider.Service;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +29,16 @@ public class UserController {
 	}
 	
 	@GetMapping("/aUser/{empId}")
-	@ResponseBody
+	//@ResponseBody
 	public User getOneUser(@PathVariable int empId) {
 		int empId1 = empId;
-		return userDaoServices.getOneUser( empId1);
+		
+		User user1= userDaoServices.getOneUser( empId1);
+		
+		if (user1==null) 
+			throw new UserNotFoundException("ID is "+empId);
+			
+		return user1;
 	}
 	
 	
