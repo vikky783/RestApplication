@@ -50,4 +50,22 @@ public class UserDaoServices {
 	}
 	
 	
+public  User deleteOne(int empId) {
+		
+	Iterator<User> userIterator = userList.iterator();
+	while (userIterator.hasNext()) {
+		User user = (User) userIterator.next();
+		
+		if (user.getEmpId()==empId) {
+			userList.remove(empId);
+			return user;
+		}
+		
+	}
+		
+	return null;
+	}
+
+	
+	
 }
