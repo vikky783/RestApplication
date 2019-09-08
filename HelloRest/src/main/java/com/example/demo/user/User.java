@@ -4,15 +4,22 @@ import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 
 public class User {
-
+	
+	@Size(min = 2,message = "Minimum size should be 2 for name")
 	private String name;
 	
 	@Id
 	@GeneratedValue
+	@Positive
 	private Integer empId;
+	@Past
 	private Date dob;
 	
 	/**
