@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.validation.Valid;
+
 import org.hibernate.jpa.internal.enhance.EnhancingClassTransformerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +50,7 @@ public class UserController {
 	//User userinSer = new User("raju",5, new Date());
 	
 	@PostMapping("/addUser")
-	public ResponseEntity<Object> addUser(@RequestBody User user) {
+	public ResponseEntity<Object> addUser(@Valid @RequestBody User user) {
 		User savedUser = userDaoServices.addUser(user);
 		
 		//EnhancingClassTransformerImpl the Post method to return correct HTTP status Code and loaction
@@ -63,10 +65,11 @@ public class UserController {
 	
 	@DeleteMapping("/dUser/{empId}")
 	//@ResponseBody add commit and push
-	public User deleteUser(@PathVariable int empId) {
-		int empIdtoDel = empId;
+	public User deleteUser( @PathVariable int empId) {
+		//int empIdtoDel =
+		//		empId;
 		
-		User user1= userDaoServices.deleteOne( empIdtoDel);
+		User user1= userDaoServices.deleteOne( empId);
 		
 		
 		if (user1==null) 
