@@ -62,7 +62,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/dUser/{empId}")
-	//@ResponseBody
+	//@ResponseBody add commit and push
 	public User deleteUser(@PathVariable int empId) {
 		int empIdtoDel = empId;
 		
