@@ -1,6 +1,8 @@
 package com.example.demo.user;
 
 import java.net.URI;
+
+
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.security.Provider.Service;
 import java.util.Date;
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.boot.autoconfigure.hateoas.*;
+
+
 
 @RestController
 public class UserController {
@@ -42,6 +47,8 @@ public class UserController {
 		
 		if (user1==null) 
 			throw new UserNotFoundException("ID is "+empId);
+		
+		
 			
 		return user1;
 	}
